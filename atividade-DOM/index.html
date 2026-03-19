@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manipulação do DOM</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="container-header">
+        <h2 id="btn-tema" style="color: white">Mudar tema</h2>
+      </nav>
+    </header>
+
+    <main style="max-width: 1100px; margin: 40px auto; padding: 0 20px">
+      <section>
+        <label for="nomeUsuario">Digite seu nome:</label>
+        <input type="text" id="nomeUsuario" placeholder="Seu nome aqui..." />
+        <button id="btn-enviar">Enviar</button>
+      </section>
+
+      <div
+        id="mensagem-boas-vendas"
+        style="margin-top: 20px; font-size: 1.5rem; font-weight: bold"
+      ></div>
+    </main>
+
+    <script>
+      const btnTema = document.getElementById("btn-tema");
+      const btnEnviar = document.getElementById("btn-enviar");
+      const inputNome = document.getElementById("nomeUsuario");
+      const displayMensagem = document.getElementById("mensagem-boas-vendas");
+      const corpoPagina = document.body;
+
+      btnTema.addEventListener("click", () => {
+        corpoPagina.classList.toggle("dark-mode");
+
+        if (corpoPagina.classList.contains("dark-mode")) {
+          btnTema.textContent = "Modo Claro";
+        } else {
+          btnTema.textContent = "Modo Escuro";
+        }
+      });
+
+      btnEnviar.addEventListener("click", () => {
+        const nome = inputNome.value;
+
+        if (nome.trim() !== "") {
+          displayMensagem.textContent = `Olá, ${nome}! Seja bem-vindo(a).`;
+          inputNome.value = "";
+        } else {
+          alert("Por favor, digite um nome válido.");
+        }
+      });
+    </script>
+  </body>
+</html>
