@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Atividades Switch Case</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background: #f4f4f9;
+        padding: 20px;
+      }
+      .exercicio {
+        background: white;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      h3 {
+        color: #333;
+      }
+      .resultado {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #0056b3;
+      }
+      input {
+        padding: 5px;
+        width: 50px;
+      }
+      button {
+        padding: 5px 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="exercicio">
+      <h3>1 - Estilo de Filme Favorito</h3>
+      <p>1-Ação | 2-Comédia | 3-Drama | 4-Terror | 5-Ficção | 6-Romance</p>
+      <input type="number" id="inputFilme" placeholder="Nº" />
+      <button onclick="verificarFilme()">Selecionar</button>
+      <p id="resFilme" class="resultado"></p>
+    </div>
+
+    <div class="exercicio">
+      <h3>2 - Gênero Musical</h3>
+      <p>1-Rock | 2-Pop | 3-Hip Hop | 4-Eletrônica | 5-Jazz | 6-Clássica</p>
+      <input type="number" id="inputMusica" placeholder="Nº" />
+      <button onclick="verificarMusica()">Selecionar</button>
+      <p id="resMusica" class="resultado"></p>
+    </div>
+
+    <div class="exercicio">
+      <h3>3 - Tema: Linguagens de Programação</h3>
+      <p>1-JavaScript | 2-Python | 3-Java</p>
+      <input type="number" id="inputTema" placeholder="Nº" />
+      <button onclick="verificarTema()">Selecionar</button>
+      <p id="resTema" class="resultado"></p>
+    </div>
+
+    <script>
+      function verificarFilme() {
+        const opcao = parseInt(document.getElementById("inputFilme").value);
+        const display = document.getElementById("resFilme");
+        let estilo = "";
+
+        switch (opcao) {
+          case 1:
+            estilo = "Ação";
+            break;
+          case 2:
+            estilo = "Comédia";
+            break;
+          case 3:
+            estilo = "Drama";
+            break;
+          case 4:
+            estilo = "Terror";
+            break;
+          case 5:
+            estilo = "Ficção Científica";
+            break;
+          case 6:
+            estilo = "Romance";
+            break;
+          default:
+            display.innerHTML = "Opção inválida! Escolha de 1 a 6.";
+            return;
+        }
+        display.innerHTML = `Seu estilo de filme favorito é: ${estilo}`;
+      }
+
+      function verificarMusica() {
+        const opcao = parseInt(document.getElementById("inputMusica").value);
+        const display = document.getElementById("resMusica");
+        let genero = "";
+
+        switch (opcao) {
+          case 1:
+            genero = "Rock";
+            break;
+          case 2:
+            genero = "Pop";
+            break;
+          case 3:
+            genero = "Hip Hop";
+            break;
+          case 4:
+            genero = "Eletrônica";
+            break;
+          case 5:
+            genero = "Jazz";
+            break;
+          case 6:
+            genero = "Clássica";
+            break;
+          default:
+            display.innerHTML = "Opção inválida! Escolha de 1 a 6.";
+            return;
+        }
+        display.innerHTML = `Seu gênero musical preferido é: ${genero}`;
+      }
+
+      function verificarTema() {
+        const opcao = parseInt(document.getElementById("inputTema").value);
+        const display = document.getElementById("resTema");
+        let mensagem = "";
+
+        switch (opcao) {
+          case 1:
+            mensagem =
+              "JavaScript: O coração da web! Continue explorando o desenvolvimento Front-end.";
+            break;
+          case 2:
+            mensagem =
+              "Python: Excelente para Ciência de Dados! Desenvolva suas habilidades em lógica e IA.";
+            break;
+          case 3:
+            mensagem =
+              "Java: Poderoso para sistemas robustos! Explore o mundo do desenvolvimento Back-end.";
+            break;
+          default:
+            display.innerHTML = "Opção inválida! Escolha 1, 2 ou 3.";
+            return;
+        }
+        display.innerHTML = `${mensagem} <br><strong>Incentivo:</strong> Continue praticando para se tornar um mestre nesta área!`;
+      }
+    </script>
+  </body>
+</html>
