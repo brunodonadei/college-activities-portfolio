@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .result {
+        margin-top: 15px;
+        font-size: 1.1rem;
+        min-height: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="student-form">
+      <input type="text" id="n1" placeholder="Nota 1" />
+      <input type="text" id="n2" placeholder="Nota 2" />
+      <input type="text" id="n3" placeholder="Nota 3" />
+      <button type="submit">Calcular Média</button>
+      <p class="result"></p>
+    </form>
+
+    <script>
+      const studentForm = document.querySelector("#student-form");
+      const resultDisplay = document.querySelector(".result");
+
+      studentForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const n1 = parseFloat(
+          document.querySelector("#n1").value.replace(",", "."),
+        );
+        const n2 = parseFloat(
+          document.querySelector("#n2").value.replace(",", "."),
+        );
+        const n3 = parseFloat(
+          document.querySelector("#n3").value.replace(",", "."),
+        );
+
+        if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+          resultDisplay.innerHTML = "Por favor, preencha as três notas.";
+          return;
+        }
+
+        const average = (n1 + n2 + n3) / 3;
+
+        if (average >= 7) {
+          resultDisplay.innerHTML = `Média: ${average.toFixed(1)} - <strong>Aprovado</strong>`;
+          resultDisplay.style.color = "green";
+        } else {
+          resultDisplay.innerHTML = `Média: ${average.toFixed(1)} - <strong>Reprovado</strong>`;
+          resultDisplay.style.color = "red";
+        }
+      });
+    </script>
+  </body>
+</html>

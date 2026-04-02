@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sistema de Login</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .login-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      #message {
+        margin-top: 15px;
+        font-weight: bold;
+        min-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-card">
+      <h2>Login Admin</h2>
+      <form id="loginForm">
+        <input type="text" id="user" placeholder="Usuário" required />
+        <input type="password" id="pass" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+      </form>
+      <p id="message"></p>
+    </div>
+
+    <script>
+      const form = document.querySelector("#loginForm");
+      const msg = document.querySelector("#message");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const usuarioDigitado = document.querySelector("#user").value;
+        const senhaDigitada = document.querySelector("#pass").value;
+
+        if (usuarioDigitado === "admin" && senhaDigitada === "1234") {
+          msg.innerHTML = "Login bem-sucedido!";
+          msg.style.color = "green";
+        } else if (usuarioDigitado === "admin") {
+          msg.innerHTML = "Senha incorreta!";
+          msg.style.color = "orange";
+        } else {
+          msg.innerHTML = "Usuário não encontrado!";
+          msg.style.color = "red";
+        }
+      });
+    </script>
+  </body>
+</html>
